@@ -1,6 +1,11 @@
 package sample;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -15,12 +20,22 @@ import static sample.Main.mergeSort;
 
 public class Controller {
     File file;
+    @FXML
     public void openAction(ActionEvent actionEvent) {
-        JFileChooser fileopen = new JFileChooser();
-        int ret = fileopen.showDialog(null, "Открыть файл");
-        if (ret == JFileChooser.APPROVE_OPTION) {
-            file = fileopen.getSelectedFile();
+        Stage mainStage = new Stage();
+        FileChooser fileChooser = new FileChooser();//Класс работы с диалогом выборки и сохранения
+        fileChooser.setTitle("Open Document");//Заголовок диалога
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("txt files (*.txt)", "*.txt");//Расширение
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showOpenDialog(mainStage);//Указываем текущую сцену CodeNote.mainStage
+        if (file != null) { //Open
+            System.out.println("Процесс открытия файла");
         }
+//        JFileChooser fileopen = new JFileChooser();
+//        int ret = fileopen.showDialog(null, "Открыть файл");
+//        if (ret == JFileChooser.APPROVE_OPTION) {
+//            file = fileopen.getSelectedFile();
+//        }
     }
 
     public void sortAction(ActionEvent actionEvent) {
