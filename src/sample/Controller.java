@@ -27,15 +27,10 @@ public class Controller {
         fileChooser.setTitle("Open Document");//Заголовок диалога
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("txt files (*.txt)", "*.txt");//Расширение
         fileChooser.getExtensionFilters().add(extFilter);
-        File file = fileChooser.showOpenDialog(mainStage);//Указываем текущую сцену CodeNote.mainStage
+        file = fileChooser.showOpenDialog(mainStage);//Указываем текущую сцену mainStage
         if (file != null) { //Open
             System.out.println("Процесс открытия файла");
         }
-//        JFileChooser fileopen = new JFileChooser();
-//        int ret = fileopen.showDialog(null, "Открыть файл");
-//        if (ret == JFileChooser.APPROVE_OPTION) {
-//            file = fileopen.getSelectedFile();
-//        }
     }
 
     public void sortAction(ActionEvent actionEvent) {
