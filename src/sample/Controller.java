@@ -90,10 +90,7 @@ public class Controller {
             long insertionTimeSpent = insertionFinishTime - insertionStartTime;
             labelInsertion.setText("Insertion: " + bubbleTimeSpent + " ms");
 
-                btnSave.setDisable(false);
-
-
-
+            btnSave.setDisable(false);
 
             System.out.println(bubbleTimeSpent);
             System.out.println(mergeTimeSpent);
@@ -110,7 +107,7 @@ public class Controller {
     }
 
     @FXML
-    public void saveAction(ActionEvent actionEvent) {
+    public void saveAction(ActionEvent actionEvent) throws Exception {
         FileChooser fileChooser = new FileChooser();//Класс работы с диалогом выборки и сохранения
         fileChooser.setTitle("Save Document");//Заголовок диалога
         FileChooser.ExtensionFilter extFilter =  new FileChooser.ExtensionFilter("txt files (*.txt)", "*.txt");//Расширение
@@ -118,14 +115,14 @@ public class Controller {
         file2 = fileChooser.showSaveDialog(mainStage);//Указываем текущую сцену mainStage
         if (file2 != null) {
             //Save
-            System.out.println("Процесс записи файла"); }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file2))) {
             for (int i = 0; i < insertionSortedArray.length; i++) {
                 writer.write(insertionSortedArray[i] + System.getProperty("line.separator"));
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Ошибка при записи данных");
             System.exit(1);
         }
     }
+}
 }
