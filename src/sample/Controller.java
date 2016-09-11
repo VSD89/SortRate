@@ -8,10 +8,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 
 import static sample.Main.bubbleSort;
@@ -20,9 +17,12 @@ import static sample.Main.mergeSort;
 
 public class Controller {
     File file;
+    File file2;
+    Stage mainStage = new Stage();
+    int[] sortedArray;
     @FXML
     public void openAction(ActionEvent actionEvent) {
-        Stage mainStage = new Stage();
+//        mainStage.setDisable(true);
         FileChooser fileChooser = new FileChooser();//Класс работы с диалогом выборки и сохранения
         fileChooser.setTitle("Open Document");//Заголовок диалога
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("txt files (*.txt)", "*.txt");//Расширение
@@ -65,6 +65,13 @@ public class Controller {
             long insertionFinishTime = System.currentTimeMillis();
             long insertionTimeSpent = insertionFinishTime - insertionStartTime;
 
+
+            //Исправить
+            sortedArray = insertionSort(arrayNumbers);
+
+
+
+
             System.out.println(bubbleTimeSpent);
             System.out.println(mergeTimeSpent);
             System.out.println(insertionTimeSpent);
@@ -75,6 +82,26 @@ public class Controller {
             System.exit(1);
         } catch (Exception e) {
             System.out.println("Неизвестная ошибка. Выполнение программы невозможно.");
+            System.exit(1);
+        }
+    }
+
+    @FXML
+    public void saveAction(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();//Класс работы с диалогом выборки и сохранения
+        fileChooser.setTitle("Save Document");//Заголовок диалога
+        FileChooser.ExtensionFilter extFilter =  new FileChooser.ExtensionFilter("txt files (*.txt)", "*.txt");//Расширение
+        fileChooser.getExtensionFilters().add(extFilter);
+        file2 = fileChooser.showSaveDialog(mainStage);//Указываем текущую сцену mainStage
+        if (file2 != null) {
+            //Save
+            System.out.println("Процесс открытия файла"); }
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file2))) {
+            for (int i = 0; i < sortedArray.length; i++) {
+                writer.write(sortedArray[i] + System.getProperty("line.separator"));
+            }
+        } catch (IOException e) {
+            System.out.println("Ошибка при записи данных");
             System.exit(1);
         }
     }

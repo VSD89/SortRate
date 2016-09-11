@@ -21,8 +21,8 @@
    </rowConstraints>
    <children>
       <Button mnemonicParsing="false" onAction="#openAction" text="Open" />
-      <Button mnemonicParsing="false" onAction="#sortAction" text="Start" GridPane.columnIndex="1" />
-      <Button mnemonicParsing="false" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Button disable="true" mnemonicParsing="false" onAction="#sortAction" text="Start" GridPane.columnIndex="1" />
+      <Button mnemonicParsing="false" onAction="#saveAction" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Label text="Bubble" GridPane.rowIndex="1" />
       <Label text="Merge" GridPane.rowIndex="2" />
       <Label text="Insertion" GridPane.rowIndex="3" />
