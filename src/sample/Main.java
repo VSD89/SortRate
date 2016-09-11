@@ -19,16 +19,9 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }
-
-
-
-
-
-
 
     public static int[] bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length; i++){

@@ -37,7 +37,6 @@ public class Controller {
     Stage mainStage = new Stage();
     int[] insertionSortedArray;
 
-
     @FXML
     public void openAction(ActionEvent actionEvent) {
 
@@ -76,13 +75,11 @@ public class Controller {
             long bubbleTimeSpent = bubbleFinishTime - bubbleStartTime;
             labelBubble.setText("Bubble: " + bubbleTimeSpent + " ms");
 
-
             long mergeStartTime = System.currentTimeMillis();
             int[] mergeSortedArray = mergeSort(arrayNumbers);
             long mergeFinishTime = System.currentTimeMillis();
             long mergeTimeSpent = mergeFinishTime - mergeStartTime;
             labelMerge.setText("Merge: " + mergeTimeSpent + " ms");
-
 
             long insertionStartTime = System.currentTimeMillis();
             insertionSortedArray = insertionSort(arrayNumbers);
@@ -95,7 +92,6 @@ public class Controller {
             System.out.println(bubbleTimeSpent);
             System.out.println(mergeTimeSpent);
             System.out.println(insertionTimeSpent);
-
 
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден. Выполнение программы невозможно.");
@@ -115,14 +111,14 @@ public class Controller {
         file2 = fileChooser.showSaveDialog(mainStage);//Указываем текущую сцену mainStage
         if (file2 != null) {
             //Save
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file2))) {
-            for (int i = 0; i < insertionSortedArray.length; i++) {
-                writer.write(insertionSortedArray[i] + System.getProperty("line.separator"));
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file2))) {
+                for (int i = 0; i < insertionSortedArray.length; i++) {
+                    writer.write(insertionSortedArray[i] + System.getProperty("line.separator"));
+                }
+            } catch (Exception e) {
+                System.out.println("Ошибка при записи данных");
+                System.exit(1);
             }
-        } catch (Exception e) {
-            System.out.println("Ошибка при записи данных");
-            System.exit(1);
         }
     }
-}
 }
