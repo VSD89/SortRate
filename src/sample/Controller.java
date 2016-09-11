@@ -2,20 +2,15 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 
-import static sample.Main.bubbleSort;
-import static sample.Main.insertionSort;
-import static sample.Main.mergeSort;
+import static sample.Main.*;
 
 public class Controller {
 
