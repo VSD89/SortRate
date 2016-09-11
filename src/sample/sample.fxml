@@ -20,11 +20,11 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" onAction="#openAction" text="Open" />
-      <Button disable="true" mnemonicParsing="false" onAction="#sortAction" text="Start" GridPane.columnIndex="1" />
-      <Button mnemonicParsing="false" onAction="#saveAction" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Label text="Bubble" GridPane.rowIndex="1" />
-      <Label text="Merge" GridPane.rowIndex="2" />
-      <Label text="Insertion" GridPane.rowIndex="3" />
+      <Button fx:id="btnOpen" mnemonicParsing="false" onAction="#openAction" text="Open" />
+      <Button fx:id="btnStart" disable="true" mnemonicParsing="false" onAction="#sortAction" text="Start" GridPane.columnIndex="1" />
+      <Button fx:id="btnSave" disable="true" mnemonicParsing="false" onAction="#saveAction" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label fx:id="labelBubble" text="Bubble" GridPane.rowIndex="1" />
+      <Label fx:id="labelMerge" text="Merge" GridPane.rowIndex="2" />
+      <Label fx:id="labelInsertion" text="Insertion" GridPane.rowIndex="3" />
    </children>
 </GridPane>

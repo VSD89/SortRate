@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -16,24 +18,47 @@ import static sample.Main.insertionSort;
 import static sample.Main.mergeSort;
 
 public class Controller {
+
+    @FXML
+    private Button btnOpen;
+
+    @FXML
+    private Button btnStart;
+
+    @FXML
+    private Button btnSave;
+
+    @FXML
+    private Label labelBubble;
+
+    @FXML
+    private Label labelMerge;
+
+    @FXML
+    private Label labelInsertion;
+
     File file;
     File file2;
     Stage mainStage = new Stage();
-    int[] sortedArray;
+    int[] insertionSortedArray;
+
+
     @FXML
     public void openAction(ActionEvent actionEvent) {
-//        mainStage.setDisable(true);
+
         FileChooser fileChooser = new FileChooser();//Класс работы с диалогом выборки и сохранения
         fileChooser.setTitle("Open Document");//Заголовок диалога
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("txt files (*.txt)", "*.txt");//Расширение
         fileChooser.getExtensionFilters().add(extFilter);
         file = fileChooser.showOpenDialog(mainStage);//Указываем текущую сцену mainStage
         if (file != null) { //Open
-            System.out.println("Процесс открытия файла");
+            btnStart.setDisable(false);
         }
     }
 
+    @FXML
     public void sortAction(ActionEvent actionEvent) {
+
         ArrayList<String> stringList = new ArrayList<String>();
         try (BufferedReader reader = new BufferedReader((new FileReader(file)))) {
             String s;
@@ -54,20 +79,23 @@ public class Controller {
             int[] bubbleSortedArray = bubbleSort(arrayNumbers);
             long bubbleFinishTime = System.currentTimeMillis();
             long bubbleTimeSpent = bubbleFinishTime - bubbleStartTime;
+            labelBubble.setText("Bubble: " + bubbleTimeSpent + " ms");
+
 
             long mergeStartTime = System.currentTimeMillis();
             int[] mergeSortedArray = mergeSort(arrayNumbers);
             long mergeFinishTime = System.currentTimeMillis();
             long mergeTimeSpent = mergeFinishTime - mergeStartTime;
+            labelMerge.setText("Merge: " + mergeTimeSpent + " ms");
+
 
             long insertionStartTime = System.currentTimeMillis();
-            int[] insertionSortedArray = insertionSort(arrayNumbers);
+            insertionSortedArray = insertionSort(arrayNumbers);
             long insertionFinishTime = System.currentTimeMillis();
             long insertionTimeSpent = insertionFinishTime - insertionStartTime;
+            labelInsertion.setText("Insertion: " + bubbleTimeSpent + " ms");
 
-
-            //Исправить
-            sortedArray = insertionSort(arrayNumbers);
+                btnSave.setDisable(false);
 
 
 
@@ -95,10 +123,10 @@ public class Controller {
         file2 = fileChooser.showSaveDialog(mainStage);//Указываем текущую сцену mainStage
         if (file2 != null) {
             //Save
-            System.out.println("Процесс открытия файла"); }
+            System.out.println("Процесс записи файла"); }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file2))) {
-            for (int i = 0; i < sortedArray.length; i++) {
-                writer.write(sortedArray[i] + System.getProperty("line.separator"));
+            for (int i = 0; i < insertionSortedArray.length; i++) {
+                writer.write(insertionSortedArray[i] + System.getProperty("line.separator"));
             }
         } catch (IOException e) {
             System.out.println("Ошибка при записи данных");
