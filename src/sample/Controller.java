@@ -69,29 +69,29 @@ public class Controller {
                 System.out.println("Некорректный ввод данных. Выполнение программы невозможно.");
                 System.exit(1);
             }
-            long bubbleStartTime = System.currentTimeMillis();
+            long bubbleStartTime = System.nanoTime();
             int[] bubbleSortedArray = bubbleSort(arrayNumbers);
-            long bubbleFinishTime = System.currentTimeMillis();
+            long bubbleFinishTime = System.nanoTime();
             long bubbleTimeSpent = bubbleFinishTime - bubbleStartTime;
-            labelBubble.setText("Bubble: " + bubbleTimeSpent + " ms");
+            labelBubble.setText("Bubble: " + bubbleTimeSpent + " ns");
 
-            long mergeStartTime = System.currentTimeMillis();
+            long mergeStartTime = System.nanoTime();
             int[] mergeSortedArray = mergeSort(arrayNumbers);
-            long mergeFinishTime = System.currentTimeMillis();
+            long mergeFinishTime = System.nanoTime();
             long mergeTimeSpent = mergeFinishTime - mergeStartTime;
-            labelMerge.setText("Merge: " + mergeTimeSpent + " ms");
+            labelMerge.setText("Merge: " + mergeTimeSpent + " ns");
 
-            long insertionStartTime = System.currentTimeMillis();
+            long insertionStartTime = System.nanoTime();
             insertionSortedArray = insertionSort(arrayNumbers);
-            long insertionFinishTime = System.currentTimeMillis();
+            long insertionFinishTime = System.nanoTime();
             long insertionTimeSpent = insertionFinishTime - insertionStartTime;
-            labelInsertion.setText("Insertion: " + bubbleTimeSpent + " ms");
+            labelInsertion.setText("Insertion: " + insertionTimeSpent + " ns");
 
             btnSave.setDisable(false);
 
-            System.out.println(bubbleTimeSpent);
-            System.out.println(mergeTimeSpent);
-            System.out.println(insertionTimeSpent);
+//            System.out.println(bubbleTimeSpent);
+//            System.out.println(mergeTimeSpent);
+//            System.out.println(insertionTimeSpent);
 
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден. Выполнение программы невозможно.");
