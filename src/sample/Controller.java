@@ -89,10 +89,6 @@ public class Controller {
 
             btnSave.setDisable(false);
 
-//            System.out.println(bubbleTimeSpent);
-//            System.out.println(mergeTimeSpent);
-//            System.out.println(insertionTimeSpent);
-
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден. Выполнение программы невозможно.");
             System.exit(1);
