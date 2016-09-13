@@ -32,10 +32,10 @@ public class Controller {
     @FXML
     private Label labelInsertion;
 
-    File file;
-    File file2;
-    Stage mainStage = new Stage();
-    int[] insertionSortedArray;
+    private File inputFile;
+    private File outputFile;
+    private Stage mainStage = new Stage();
+    private int[] insertionSortedArray;
 
     @FXML
     public void openAction(ActionEvent actionEvent) {
@@ -44,8 +44,8 @@ public class Controller {
         fileChooser.setTitle("Open Document");//Заголовок диалога
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("txt files (*.txt)", "*.txt");//Расширение
         fileChooser.getExtensionFilters().add(extFilter);
-        file = fileChooser.showOpenDialog(mainStage);//Указываем текущую сцену mainStage
-        if (file != null) { //Open
+        inputFile = fileChooser.showOpenDialog(mainStage);//Указываем текущую сцену mainStage
+        if (inputFile != null) { //Open
             btnStart.setDisable(false);
         }
     }
@@ -54,7 +54,7 @@ public class Controller {
     public void sortAction(ActionEvent actionEvent) {
 
         ArrayList<String> stringList = new ArrayList<String>();
-        try (BufferedReader reader = new BufferedReader((new FileReader(file)))) {
+        try (BufferedReader reader = new BufferedReader((new FileReader(inputFile)))) {
             String s;
             while ((s = reader.readLine()) != null) {
                 stringList.add(s);
@@ -108,10 +108,10 @@ public class Controller {
         fileChooser.setTitle("Save Document");//Заголовок диалога
         FileChooser.ExtensionFilter extFilter =  new FileChooser.ExtensionFilter("txt files (*.txt)", "*.txt");//Расширение
         fileChooser.getExtensionFilters().add(extFilter);
-        file2 = fileChooser.showSaveDialog(mainStage);//Указываем текущую сцену mainStage
-        if (file2 != null) {
+        outputFile = fileChooser.showSaveDialog(mainStage);//Указываем текущую сцену mainStage
+        if (outputFile != null) {
             //Save
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file2))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                 for (int i = 0; i < insertionSortedArray.length; i++) {
                     writer.write(insertionSortedArray[i] + System.getProperty("line.separator"));
                 }

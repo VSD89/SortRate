@@ -23,7 +23,7 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static int[] bubbleSort(int[] arr) {
+    protected static int[] bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length; i++){
             for(int j = i+1; j < arr.length; j++){
                 if(arr[i] > arr[j]){
@@ -36,7 +36,7 @@ public class Main extends Application {
         return arr;
     }
 
-    public static int[] mergeSort(int[] arr) {
+    protected static int[] mergeSort(int[] arr) {
         int len = arr.length;
         if (len < 2) return arr;
         int middle = len / 2;
@@ -60,7 +60,7 @@ public class Main extends Application {
         return result;
     }
 
-    public static int[] insertionSort(int[] arr) {
+    protected static int[] insertionSort(int[] arr) {
         int j, temp;
         for (int i = 0; i < arr.length; i++) {
             temp = arr[i];
