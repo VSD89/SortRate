@@ -5,9 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.util.Arrays;
 
+/**
+ * @version 1.0
+ * @autor Rudnikovich Valentin
+ */
 public class Main extends Application {
 
     @Override
@@ -19,10 +22,19 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     *
+     * @param arr
+     * @return
+     */
     protected static int[] bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length; i++){
             for(int j = i+1; j < arr.length; j++){
@@ -36,6 +48,11 @@ public class Main extends Application {
         return arr;
     }
 
+    /**
+     *
+     * @param arr
+     * @return
+     */
     protected static int[] mergeSort(int[] arr) {
         int len = arr.length;
         if (len < 2) return arr;
@@ -43,6 +60,13 @@ public class Main extends Application {
         return merge(mergeSort(Arrays.copyOfRange(arr, 0, middle)),
                 mergeSort(Arrays.copyOfRange(arr, middle, len)));
     }
+
+    /**
+     *
+     * @param arr_1
+     * @param arr_2
+     * @return
+     */
     private static int[] merge(int[] arr_1, int[] arr_2) {
         int len_1 = arr_1.length, len_2 = arr_2.length;
         int a = 0, b = 0, len = len_1 + len_2; // a, b - счетчики в массивах
@@ -60,6 +84,11 @@ public class Main extends Application {
         return result;
     }
 
+    /**
+     *
+     * @param arr
+     * @return
+     */
     protected static int[] insertionSort(int[] arr) {
         int j, temp;
         for (int i = 0; i < arr.length; i++) {

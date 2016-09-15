@@ -6,12 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.*;
 import java.util.ArrayList;
-
 import static sample.Main.*;
 
+/**
+ *
+ */
 public class Controller {
 
     @FXML
@@ -37,6 +38,10 @@ public class Controller {
     private Stage mainStage = new Stage();
     private int[] insertionSortedArray;
 
+    /**
+     *
+     * @param actionEvent
+     */
     @FXML
     public void openAction(ActionEvent actionEvent) {
 
@@ -50,6 +55,10 @@ public class Controller {
         }
     }
 
+    /**
+     *
+     * @param actionEvent
+     */
     @FXML
     public void sortAction(ActionEvent actionEvent) {
 
@@ -98,6 +107,11 @@ public class Controller {
         }
     }
 
+    /**
+     *
+     * @param actionEvent
+     * @throws Exception
+     */
     @FXML
     public void saveAction(ActionEvent actionEvent) throws Exception {
         FileChooser fileChooser = new FileChooser();//Класс работы с диалогом выборки и сохранения
